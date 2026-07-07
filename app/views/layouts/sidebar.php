@@ -9,13 +9,27 @@
 
     <div class="menu">
 
-        <!-- Dashboard -->
-        <a href="?controller=dashboard&action=index">
-            🏠 Dashboard
-        </a>
+        <!-- DASHBOARD ADMIN E PERSONAL -->
+        <?php if($role == 'admin' || $role == 'trainer'): ?>
+
+            <a href="?controller=dashboard&action=index">
+                🏠 Dashboard
+            </a>
+
+        <?php endif; ?>
 
 
-        <!-- Somente ADMIN -->
+        <!-- DASHBOARD ALUNO -->
+        <?php if($role == 'student'): ?>
+
+            <a href="?controller=studentDashboard&action=index">
+                🏠 Dashboard
+            </a>
+
+        <?php endif; ?>
+
+
+        <!-- SOMENTE ADMIN -->
         <?php if($role == 'admin'): ?>
 
             <a href="?controller=student&action=index">
@@ -37,7 +51,7 @@
         <?php endif; ?>
 
 
-        <!-- ADMIN e PERSONAL -->
+        <!-- ADMIN E PERSONAL -->
         <?php if($role == 'admin' || $role == 'trainer'): ?>
 
             <a href="?controller=workout&action=index">
@@ -65,6 +79,10 @@
             <a href="?controller=myPlan&action=index">
                 💳 Meu Plano
             </a>
+            
+            <a href="?controller=recommendation&action=generateForStudent">
+                🤖 IA de Treinos
+            </a>
 
             <a href="?controller=myWorkout&action=index">
                 🏋️ Meu Treino
@@ -73,7 +91,7 @@
         <?php endif; ?>
 
 
-        <!-- Sair -->
+        <!-- SAIR -->
         <a href="?controller=auth&action=logout">
             🚪 Sair
         </a>
@@ -81,7 +99,6 @@
     </div>
 
 </div>
-
 
 <div class="main-content">
 
@@ -104,42 +121,37 @@
 </div>
 
 
-    <div class="user-area">
+<div class="user-area">
 
-        <button class="notification-btn">
+    <button class="notification-btn">
+        🔔
+    </button>
 
-            🔔
+    <div class="user-info">
 
-        </button>
+        <div class="user-details">
 
+            <strong>
+                <?= $_SESSION['user']['name'] ?>
+            </strong>
 
-        <div class="user-info">
-
-            <div class="user-details">
-
-                <strong>
-                    <?= $_SESSION['user']['name'] ?>
-                </strong>
-
-                <small>
-                    <?= ucfirst($role) ?>
-                </small>
-
-            </div>
-
-
-            <a href="?controller=auth&action=logout"
-               class="logout-btn">
-
-                🚪 Sair
-
-            </a>
+            <small>
+                <?= ucfirst($role) ?>
+            </small>
 
         </div>
+
+        <a href="?controller=auth&action=logout"
+           class="logout-btn">
+
+            🚪 Sair
+
+        </a>
 
     </div>
 
 </div>
 
+</div>
 
 <div class="page-content">

@@ -30,118 +30,270 @@
                         ✏️ Editar Aluno
                     </h2>
 
-                    <form method="POST"
-                          action="?controller=student&action=update&id=<?= $student['id'] ?>">
+   <form method="POST"
+      action="?controller=student&action=update&id=<?= $student['id'] ?>">
 
-                        <!-- NOME -->
+    <!-- ================= DADOS PESSOAIS ================= -->
 
-                        <div class="mb-3">
+    <h5 class="mb-4 fw-bold text-primary">
+        👤 Dados Pessoais
+    </h5>
 
-                            <label>Nome</label>
+    <div class="row">
 
-                            <input type="text"
-                                   name="name"
-                                   class="form-control"
-                                   value="<?= $student['name'] ?>"
-                                   required>
+        <div class="col-md-6 mb-4">
 
-                        </div>
+            <label class="form-label">
+                Nome completo
+            </label>
 
-                        <!-- EMAIL -->
+            <input
+                type="text"
+                name="name"
+                class="form-control"
+                value="<?= $student['name'] ?>"
+                required>
 
-                        <div class="mb-3">
+        </div>
 
-                            <label>Email</label>
+        <div class="col-md-6 mb-4">
 
-                            <input type="email"
-                                   name="email"
-                                   class="form-control"
-                                   value="<?= $student['email'] ?>"
-                                   required>
+            <label class="form-label">
+                E-mail
+            </label>
 
-                        </div>
+            <input
+                type="email"
+                name="email"
+                class="form-control"
+                value="<?= $student['email'] ?>"
+                required>
 
-                        <!-- IDADE -->
+        </div>
 
-                        <div class="mb-3">
+    </div>
 
-                            <label>Idade</label>
+    <div class="row">
 
-                            <input type="number"
-                                   name="age"
-                                   class="form-control"
-                                   value="<?= $student['age'] ?>">
+        <div class="col-md-4 mb-4">
 
-                        </div>
+            <label class="form-label">
+                Idade
+            </label>
 
-                        <!-- OBJETIVO -->
+            <input
+                type="number"
+                name="age"
+                class="form-control"
+                min="10"
+                max="100"
+                value="<?= $student['age'] ?>">
 
-                        <div class="mb-3">
+        </div>
 
-                            <label>Objetivo</label>
+        <div class="col-md-8 mb-4">
 
-                            <select name="objective"
-                                    class="form-select">
+            <label class="form-label">
+                Plano
+            </label>
 
-                                <option value="Hipertrofia"
-                                    <?= $student['objective'] == 'Hipertrofia' ? 'selected' : '' ?>>
+            <select
+                name="plan_id"
+                class="form-select">
 
-                                    Hipertrofia
+                <?php foreach($plans as $plan): ?>
 
-                                </option>
+                    <option
+                        value="<?= $plan['id'] ?>"
+                        <?= $student['plan_id']==$plan['id']?'selected':'' ?>>
 
-                                <option value="Emagrecimento"
-                                    <?= $student['objective'] == 'Emagrecimento' ? 'selected' : '' ?>>
+                        <?= $plan['name'] ?>
+                        -
+                        R$
+                        <?= number_format($plan['price'],2,',','.') ?>
 
-                                    Emagrecimento
+                    </option>
 
-                                </option>
+                <?php endforeach; ?>
 
-                                <option value="Força"
-                                    <?= $student['objective'] == 'Força' ? 'selected' : '' ?>>
+            </select>
 
-                                    Força
+        </div>
 
-                                </option>
+    </div>
 
-                            </select>
+    <hr class="my-4">
 
-                        </div>
+    <!-- ================= IA ================= -->
 
-                        <!-- PLANOS -->
+    <h5 class="mb-4 fw-bold text-success">
 
-                        <div class="mb-4">
+        🤖 Configuração da IA
 
-                            <label>Plano</label>
+    </h5>
 
-                            <select name="plan_id"
-                                    class="form-select">
+    <div class="row">
 
-                                <?php foreach($plans as $plan): ?>
+        <div class="col-md-6 mb-4">
 
-                                    <option value="<?= $plan['id'] ?>"
+            <label class="form-label">
 
-                                        <?= $student['plan_id'] == $plan['id'] ? 'selected' : '' ?>>
+                Objetivo
 
-                                        <?= $plan['name'] ?>
-                                        -
-                                        R$ <?= $plan['price'] ?>
+            </label>
 
-                                    </option>
+            <select
+                name="objective"
+                class="form-select">
 
-                                <?php endforeach; ?>
+                <option value="Hipertrofia"
+                    <?= $student['objective']=='Hipertrofia'?'selected':'' ?>>
 
-                            </select>
+                    💪 Hipertrofia
 
-                        </div>
+                </option>
 
-                        <button class="btn btn-dark w-100">
+                <option value="Emagrecimento"
+                    <?= $student['objective']=='Emagrecimento'?'selected':'' ?>>
 
-                            Atualizar Aluno
+                    🔥 Emagrecimento
 
-                        </button>
+                </option>
 
-                    </form>
+                <option value="Força"
+                    <?= $student['objective']=='Força'?'selected':'' ?>>
+
+                    🏋️ Força
+
+                </option>
+
+                <option value="Resistência"
+                    <?= $student['objective']=='Resistência'?'selected':'' ?>>
+
+                    ❤️ Resistência
+
+                </option>
+
+                <option value="Condicionamento"
+                    <?= $student['objective']=='Condicionamento'?'selected':'' ?>>
+
+                    ⚡ Condicionamento
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="col-md-6 mb-4">
+
+            <label class="form-label">
+
+                Dias de treino
+
+            </label>
+
+            <select
+                name="training_days"
+                class="form-select">
+
+                <?php for($i=1;$i<=6;$i++): ?>
+
+                    <option
+                        value="<?= $i ?>"
+                        <?= $student['training_days']==$i?'selected':'' ?>>
+
+                        <?= $i ?>
+
+                        dia<?= $i>1?'s':'' ?> por semana
+
+                    </option>
+
+                <?php endfor; ?>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-4">
+
+            <label class="form-label">
+
+                Nível de experiência
+
+            </label>
+
+            <select
+                name="experience_level"
+                class="form-select">
+
+                <option value="Iniciante"
+                    <?= $student['experience_level']=='Iniciante'?'selected':'' ?>>
+
+                    🟢 Iniciante
+
+                </option>
+
+                <option value="Intermediário"
+                    <?= $student['experience_level']=='Intermediário'?'selected':'' ?>>
+
+                    🟡 Intermediário
+
+                </option>
+
+                <option value="Avançado"
+                    <?= $student['experience_level']=='Avançado'?'selected':'' ?>>
+
+                    🔴 Avançado
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="col-md-6 mb-4">
+
+            <label class="form-label">
+
+                Limitações físicas
+
+            </label>
+
+            <textarea
+                name="limitations"
+                rows="4"
+                class="form-control"
+                placeholder="Descreva lesões, dores ou restrições físicas..."><?= htmlspecialchars($student['limitations'] ?? '') ?></textarea>
+
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-between mt-5">
+
+        <a href="?controller=student&action=index"
+           class="btn btn-outline-secondary">
+
+            ← Voltar
+
+        </a>
+
+        <button
+            type="submit"
+            class="btn btn-success">
+
+            💾 Atualizar Aluno
+
+        </button>
+
+    </div>
+
+</form>
 
                 </div>
 

@@ -1,0 +1,177 @@
+/* ===========================
+   ÁREA DO ALUNO
+=========================== */
+
+.student-card{
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(15px);
+
+    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.12);
+
+    transition: all .3s ease;
+
+    overflow: hidden;
+}
+
+.student-card:hover{
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.20);
+}
+
+.student-card .card-body{
+    padding: 35px;
+}
+
+.student-icon{
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.student-title{
+    font-size: 18px;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.student-value{
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.gradient-card{
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #6610f2
+        );
+
+    color: white;
+}
+
+.gradient-card .student-title{
+    color: rgba(255,255,255,.8);
+}
+
+.quick-link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.quick-link:hover{
+    color: inherit;
+}
+
+.quick-link .student-card{
+    text-align: center;
+}
+
+.quick-link h5{
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.profile-avatar{
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:48px;
+
+    margin:auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #6610f2
+        );
+
+    color:white;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.15);
+}
+
+.profile-info{
+    margin-top:20px;
+}
+
+.profile-info p{
+    margin-bottom:12px;
+    font-size:16px;
+}
+
+.profile-info strong{
+    color:#495057;
+}
+
+.plan-price{
+    font-size:48px;
+    font-weight:700;
+}
+
+.plan-feature{
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.plan-feature:last-child{
+    border-bottom:none;
+}
+
+.workout-card{
+    border-radius: 25px;
+    overflow: hidden;
+
+    transition: all .3s ease;
+
+    background: #fff;
+}
+
+.workout-card:hover{
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.15) !important;
+}
+
+.workout-header{
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #6610f2
+        );
+
+    color: white;
+
+    padding: 20px;
+}
+
+.workout-header h4{
+    font-weight: 700;
+}
+
+.workout-card .btn{
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 600;
+}
+
+.workout-card .badge{
+    font-size: .9rem;
+    padding: 8px 12px;
+}

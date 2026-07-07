@@ -1,79 +1,45 @@
-<?php require_once '../app/views/layouts/header.php'; ?>
-<?php require_once '../app/views/layouts/sidebar.php'; ?>
-<!DOCTYPE html>
-<html>
-<head>
-
-<title>Gerador de Treino</title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-rel="stylesheet">
-
-</head>
-
-<body class="bg-light">
-
 <div class="container mt-5">
 
-<div class="card shadow">
+    <div class="card shadow border-0 rounded-4">
 
-<div class="card-header bg-dark text-white">
+        <div class="card-body p-5 text-center">
 
-<h3>🤖 Gerador Automático de Treino</h3>
+            <h2 class="mb-3">
+                🤖 IA de Treinos GymTech
+            </h2>
 
-</div>
+            <p class="text-muted mb-5">
+                Gere automaticamente um treino personalizado com base
+                no seu objetivo e na quantidade de dias disponíveis
+                para treino durante a semana.
+            </p>
 
-<div class="card-body">
+            <?php if(!$hasWorkout): ?>
 
-<form method="POST"
-action="?controller=recommendation&action=generate">
+                <a href="?controller=recommendation&action=generateAI"
+                   class="btn btn-success btn-lg">
 
-<div class="mb-3">
+                    🤖 Gerar Meu Treino Agora
 
-<label>Objetivo</label>
+                </a>
 
-<select name="objective"
-class="form-select">
+            <?php else: ?>
 
-<option>Hipertrofia</option>
-<option>Emagrecimento</option>
-<option>Força</option>
+                <div class="alert alert-success mt-4">
+                    ✅ Você já possui treinos gerados.
+                </div>
 
-</select>
+                <a href="?controller=myWorkout&action=index"
+                   class="btn btn-primary">
 
-</div>
+                    🏋️ Ver meus treinos
 
-<div class="mb-3">
+                </a>
 
-<label>Dias por semana</label>
+            <?php endif; ?>
 
-<select name="days"
-class="form-select">
+        </div>
 
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-
-</select>
+    </div>
 
 </div>
-
-<button class="btn btn-success">
-
-Gerar Treino
-
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-</div>
-
-</body>
-</html>

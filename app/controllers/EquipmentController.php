@@ -39,7 +39,7 @@ class EquipmentController extends Controller{
         $model = new Equipment();
         $equipment = $model->find($id);
         $this->view(
-            'equipment/edit',[
+            'equipments/edit',[
                 'equipment' => $equipment
             ]
         );

@@ -17,6 +17,14 @@
       rel="stylesheet">
 
 <link rel="stylesheet"
+      href="/GymTech/public/assets/css/student-dashboard.css">
+
+<link rel="stylesheet"
+      href="/GymTech/public/assets/css/student-area.css">
+<link rel="stylesheet"
+      href="/GymTech/public/assets/css/student_workout.css">
+
+<link rel="stylesheet"
       href="assets/css/style.css">
 
 </head>

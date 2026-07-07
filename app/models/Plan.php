@@ -20,7 +20,7 @@ class Plan extends Model {
 
     public function hasStudents($id){
         $stmt = $this->db->prepare(
-            "SELECT COUNT(*) FROM stundents WHERE plan_id = ?"
+            "SELECT COUNT(*) FROM students WHERE plan_id = ?"
         );
         $stmt->execute([$id]);
         return $stmt->fetchColumn() > 0;
@@ -28,14 +28,14 @@ class Plan extends Model {
 
     public function create($data){
         $sql = "INSERT INTO plans
-        (name, price, durations_days, description)
-        VALUES (?, ?, ?, ?, ?)";
+        (name, price, duration, description)
+        VALUES (?, ?, ?, ?)";
 
         $stmt = $this->db->prepare($sql);
         return $stmt->execute([
             $data['name'],
             $data['price'],
-            $data['duration_days'],
+            $data['duration'],
             $data['description']
         ]);
     }
@@ -52,7 +52,7 @@ class Plan extends Model {
            $sql = "UPDATE plans 
                 SET name = ?,
                     price = ?,
-                    duration_days = ?,
+                    duration = ?,
                     description = ?
                 WHERE id = ?";
 
@@ -61,7 +61,7 @@ class Plan extends Model {
         return $stmt->execute([
             $data['name'],
             $data['price'],
-            $data['duration_days'],
+            $data['duration'],
             $data['description'],
             $data['id']
         ]);
@@ -69,10 +69,12 @@ class Plan extends Model {
 
     public function delete($id){
         if($this->hasStudents($id)){
+            $_SESSION['error'] =
+            "Não é possível excluir um plano que possui alunos vinculados.";
             return false;
         }
         $stmt = $this->db->prepare(
-            "DELETE FORM plans WHERE id = ?"
+            "DELETE FROM plans WHERE id = ?"
         );
         return $stmt->execute([$id]);
     }

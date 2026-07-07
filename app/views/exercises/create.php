@@ -1,171 +1,211 @@
-<?php require_once '../app/views/layouts/header.php'; ?>
-<?php require_once '../app/views/layouts/sidebar.php'; ?>
-<!DOCTYPE html>
-<html lang="pt-br">
+<div class="page-header">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo Exercício</title>
+    <div>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+        <h2>
+            Novo Exercício
+        </h2>
 
-    <style>
-        body{
-            background: #f4f6f9;
-        }
+        <span>
+            Adicione exercícios à biblioteca da academia
+        </span>
 
-        .card{
-            border:none;
-            border-radius:15px;
-        }
+    </div>
 
-        .card-header{
-            background:#212529;
-            color:white;
-            border-radius:15px 15px 0 0 !important;
-        }
-    </style>
-</head>
+    <a href="?controller=exercise&action=index"
+       class="btn btn-outline-secondary">
 
-<body>
+        Voltar
 
-<div class="container mt-5">
+    </a>
 
-    <div class="row justify-content-center">
+</div>
 
-        <div class="col-lg-8">
 
-            <div class="card shadow">
+<div class="row justify-content-center mt-4">
 
-                <div class="card-header py-3">
-                    <h3 class="mb-0">
-                        💪 Cadastrar Exercício
-                    </h3>
-                </div>
+    <div class="col-lg-10">
 
-                <div class="card-body">
+        <div class="glass-card p-5">
 
-                    <form method="POST"
-                          action="?controller=exercise&action=store">
+            <form method="POST"
+                  action="?controller=exercise&action=store">
 
-                        <!-- Nome -->
+                <div class="row">
 
-                        <div class="mb-3">
+                    <div class="col-md-6 mb-4">
 
-                            <label class="form-label">
-                                Nome do Exercício
-                            </label>
+                        <label class="form-label">
 
-                            <input type="text"
-                                   name="name"
-                                   class="form-control"
-                                   placeholder="Ex: Supino Reto"
-                                   required>
+                            Nome do Exercício
 
-                        </div>
+                        </label>
 
-                        <!-- Grupo Muscular -->
+                        <input type="text"
+                               name="name"
+                               class="form-control"
+                               placeholder="Ex: Supino Reto"
+                               required>
 
-                        <div class="mb-3">
+                    </div>
 
-                            <label class="form-label">
-                                Grupo Muscular
-                            </label>
 
-                            <select name="muscle_group"
-                                    class="form-select"
-                                    required>
+                    <div class="col-md-6 mb-4">
 
-                                <option value="">
-                                    Selecione...
-                                </option>
+                        <label class="form-label">
 
-                                <option value="Peito">Peito</option>
+                            Grupo Muscular
 
-                                <option value="Costas">Costas</option>
+                        </label>
 
-                                <option value="Ombros">Ombros</option>
+                        <select name="muscle_group"
+                                class="form-select"
+                                required>
 
-                                <option value="Bíceps">Bíceps</option>
+                            <option value="">
+                                Selecione...
+                            </option>
 
-                                <option value="Tríceps">Tríceps</option>
+                            <option>Peito</option>
+                            <option>Costas</option>
+                            <option>Ombros</option>
+                            <option>Bíceps</option>
+                            <option>Tríceps</option>
+                            <option>Pernas</option>
+                            <option>Panturrilha</option>
+                            <option>Abdômen</option>
+                            <option>Cardio</option>
 
-                                <option value="Pernas">Pernas</option>
+                        </select>
 
-                                <option value="Panturrilha">Panturrilha</option>
-
-                                <option value="Abdômen">Abdômen</option>
-
-                                <option value="Cardio">Cardio</option>
-
-                            </select>
-
-                        </div>
-
-                        <!-- Vídeo -->
-
-                        <div class="mb-3">
-
-                            <label class="form-label">
-                                Link do Vídeo
-                            </label>
-
-                            <input type="url"
-                                   name="video_url"
-                                   class="form-control"
-                                   placeholder="https://youtube.com/...">
-
-                        </div>
-
-                        <!-- Descrição -->
-
-                        <div class="mb-4">
-
-                            <label class="form-label">
-                                Descrição / Execução
-                            </label>
-
-                            <textarea name="description"
-                                      rows="5"
-                                      class="form-control"
-                                      placeholder="Descreva como executar corretamente o exercício..."></textarea>
-
-                        </div>
-
-                        <!-- Botões -->
-
-                        <div class="d-flex justify-content-between">
-
-                            <a href="?controller=exercise&action=index"
-                               class="btn btn-secondary">
-
-                                Voltar
-
-                            </a>
-
-                            <button type="submit"
-                                    class="btn btn-success">
-
-                                Salvar Exercício
-
-                            </button>
-
-                        </div>
-
-                    </form>
+                    </div>
 
                 </div>
 
-            </div>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-4">
+
+                        <label class="form-label">
+
+                            Equipamento
+
+                        </label>
+
+                        <select name="equipment"
+                                class="form-select">
+
+                            <option>Barra</option>
+                            <option>Halteres</option>
+                            <option>Máquina</option>
+                            <option>Polia</option>
+                            <option>Smith</option>
+                            <option>Peso Corporal</option>
+                            <option>Outro</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-4">
+
+                        <label class="form-label">
+
+                            Dificuldade
+
+                        </label>
+
+                        <select name="difficulty"
+                                class="form-select">
+
+                            <option>Iniciante</option>
+                            <option>Intermediário</option>
+                            <option>Avançado</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-4">
+
+                        <label class="form-label">
+
+                            Objetivo
+
+                        </label>
+
+                        <select name="objective"
+                                class="form-select">
+
+                            <option>Hipertrofia</option>
+                            <option>Emagrecimento</option>
+                            <option>Força</option>
+                            <option>Resistência</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+
+                        Vídeo Demonstrativo
+
+                    </label>
+
+                    <input type="url"
+                           name="video_url"
+                           class="form-control"
+                           placeholder="https://youtube.com/...">
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+
+                        Descrição / Execução
+
+                    </label>
+
+                    <textarea name="description"
+                              rows="5"
+                              class="form-control"
+                              placeholder="Explique como executar corretamente o exercício"></textarea>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <a href="?controller=exercise&action=index"
+                       class="btn btn-outline-dark">
+
+                        Cancelar
+
+                    </a>
+
+                    <button type="submit"
+                            class="btn btn-gradient">
+
+                        Salvar Exercício
+
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
     </div>
 
 </div>
-
-</body>
-</html>
-<?php require_once '../app/views/layouts/footer.php'; ?>

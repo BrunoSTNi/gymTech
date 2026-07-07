@@ -1,129 +1,97 @@
-<?php require_once '../app/views/layouts/header.php'; ?>
-<?php require_once '../app/views/layouts/sidebar.php'; ?>
-<!DOCTYPE html>
-<html lang="pt-br">
+<div class="page-header">
 
-<head>
+    <div>
 
-    <meta charset="UTF-8">
+        <h2>
+            Novo Treino
+        </h2>
 
-    <title>Novo Treino</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
-
-</head>
-
-<body class="bg-light">
-
-<div class="container mt-5">
-
-    <div class="row justify-content-center">
-
-        <div class="col-md-6">
-
-            <div class="card shadow border-0">
-
-                <div class="card-body p-4">
-
-                    <h2 class="mb-4">
-                        🏋️ Novo Treino
-                    </h2>
-
-                    <form method="POST"
-                          action="?controller=workout&action=store">
-
-                        <!-- ALUNO -->
-
-                        <div class="mb-3">
-
-                            <label>Aluno</label>
-
-                            <select name="student_id"
-                                    class="form-select">
-
-                                <?php foreach($students as $student): ?>
-
-                                    <option value="<?= $student['id'] ?>">
-
-                                        <?= $student['name'] ?>
-
-                                    </option>
-
-                                <?php endforeach; ?>
-
-                            </select>
-
-                        </div>
-
-                        <!-- TREINO -->
-
-                        <div class="mb-3">
-
-                            <label>Nome do treino</label>
-
-                            <input type="text"
-                                   name="workout_name"
-                                   class="form-control"
-                                   placeholder="Treino A">
-
-                        </div>
-
-                        <!-- OBJETIVO -->
-
-                        <div class="mb-3">
-
-                            <label>Objetivo</label>
-
-                            <select name="objective"
-                                    class="form-select">
-
-                                <option>Hipertrofia</option>
-
-                                <option>Emagrecimento</option>
-
-                                <option>Força</option>
-
-                            </select>
-
-                        </div>
-
-                        <!-- DIAS -->
-
-                        <div class="mb-4">
-
-                            <label>Dias de treino</label>
-
-                            <select name="training_days" class="form-select">
-                                <option value="1">1 dia</option>
-                                <option value="2">2 dias</option>
-                                <option value="3">3 dias</option>
-                                <option value="4">4 dias</option>
-                                <option value="5">5 dias</option>
-                                <option value="6">6 dias</option>
-                                <option value="7">7 dias</option>
-                            </select>
-
-                        </div>
-
-                        <button class="btn btn-dark w-100">
-
-                            Salvar Treino
-
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
+        <span>
+            Cadastre um novo treino para um aluno
+        </span>
 
     </div>
 
 </div>
 
-</body>
-</html>
-<?php require_once '../app/views/layouts/footer.php'; ?>
+<div class="glass-card p-5 mt-4">
+
+<form method="POST"
+      action="?controller=workout&action=store">
+
+    <div class="row">
+
+        <div class="col-md-6 mb-4">
+
+            <label>Aluno</label>
+
+            <select name="student_id"
+                    class="form-select"
+                    required>
+
+                <?php foreach($students as $student): ?>
+
+                    <option value="<?= $student['id'] ?>">
+
+                        <?= $student['name'] ?>
+
+                    </option>
+
+                <?php endforeach; ?>
+
+            </select>
+
+        </div>
+
+        <div class="col-md-6 mb-4">
+
+            <label>Nome do Treino</label>
+
+            <input type="text"
+                   name="workout_name"
+                   class="form-control"
+                   placeholder="Treino A"
+                   required>
+
+        </div>
+
+        <div class="col-md-6 mb-4">
+
+            <label>Objetivo</label>
+
+            <select name="objective"
+                    class="form-select">
+
+                <option>Hipertrofia</option>
+                <option>Emagrecimento</option>
+                <option>Força</option>
+                <option>Resistência</option>
+
+            </select>
+
+        </div>
+
+        <div class="col-md-6 mb-4">
+
+            <label>Dias por semana</label>
+
+            <input type="number"
+                   name="training_days"
+                   class="form-control"
+                   min="1"
+                   max="7"
+                   required>
+
+        </div>
+
+    </div>
+
+    <button class="btn btn-gradient">
+
+        Salvar Treino
+
+    </button>
+
+</form>
+
+</div>

@@ -1,50 +1,76 @@
-<?php require_once '../app/views/layouts/header.php'; ?>
-<?php require_once '../app/views/layouts/sidebar.php'; ?>
-<!DOCTYPE html>
-<html>
-<head>
+<div class="container">
 
-<title>Resultado</title>
+    <div class="card shadow border-0 rounded-4">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-rel="stylesheet">
+        <div class="card-body p-5 text-center">
 
-</head>
+            <div style="font-size:80px;">
+                🤖
+            </div>
 
-<body>
+            <h2 class="mt-3">
+                IA de Treinos GymTech
+            </h2>
 
-<div class="container mt-5">
+            <p class="text-muted mb-4">
+                Gere automaticamente um treino personalizado baseado
+                no seu objetivo e na quantidade de dias disponíveis
+                para treinar durante a semana.
+            </p>
 
-<div class="card shadow">
+            <div class="row mt-5">
 
-<div class="card-header bg-success text-white">
+                <div class="col-md-4 mb-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <h1>🎯</h1>
+                            <h5>Objetivo</h5>
+                            <p class="text-muted">
+                                Hipertrofia, emagrecimento ou condicionamento.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-<h3>Treino Sugerido</h3>
+                <div class="col-md-4 mb-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <h1>📅</h1>
+                            <h5>Dias de treino</h5>
+                            <p class="text-muted">
+                                A IA cria treinos A, B, C, D e E automaticamente.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <h1>⚡</h1>
+                            <h5>Instantâneo</h5>
+                            <p class="text-muted">
+                                O treino é criado imediatamente no sistema.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-5">
+
+                <a href="?controller=recommendation&action=generateAI"
+                   class="btn btn-success btn-lg px-5">
+
+                    🤖 Gerar Meu Treino Agora
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
-
-<div class="card-body">
-
-<ul class="list-group">
-
-<?php foreach($suggestions as $item): ?>
-
-<li class="list-group-item">
-
-<?= $item ?>
-
-</li>
-
-<?php endforeach; ?>
-
-</ul>
-
-</div>
-
-</div>
-
-</div>
-
-</body>
-</html>
-<?php require_once '../app/views/layouts/footer.php'; ?>

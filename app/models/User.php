@@ -15,16 +15,38 @@ class User extends Model {
 
     public function create($name , $email, $password, $role = 'student') {
 
-        $sql = "INSERT INTO users(name, email, password, role)
-                VALUES(?, ?, ?, ?)";
-        
+        $sql = "INSERT INTO users(name, email, password, role, first_login)
+                VALUES(?, ?, ?, ?, 1)";
+         
         $stmt = $this->db->prepare($sql);
 
-        return $stmt->execute([
+        $stmt->execute([
             $name,
             $email,             
             $password, 
-            $role
+            $role            
             ]);
+        return $this->db->lastInsertId();
+    }
+
+    public function updatePassword($id, $password){
+        $stmt = $this->db->prepare(
+            "UPDATE users
+             SET password = ? 
+             WHERE id = ?"
+        );
+
+        return $stmt->execute([
+            $password,
+            $id
+        ]);
+    }
+    public function disableFirstLogin($id){
+        $stmt = $this->db->prepare(
+            "UPDATE users
+            SET first_login = 0
+            WHERE id = ?"
+        );
+        return $stmt->execute([$id]);
     }
 }

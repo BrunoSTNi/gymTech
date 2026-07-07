@@ -165,24 +165,25 @@
 
 
                         <td>
+                            <div class="action-buttons">
 
 
-                            <a href="?controller=plan&action=edit&id=<?= $plan['id'] ?>"
-                               class="btn btn-outline-warning btn-sm">
+                                <a href="?controller=plan&action=edit&id=<?= $plan['id'] ?>"
+                                class="btn btn-outline-warning btn-sm">
 
-                                Editar
+                                    Editar
 
-                            </a>
+                                </a>
 
 
-                            <a href="?controller=plan&action=delete&id=<?= $plan['id'] ?>"
-                               class="btn btn-outline-danger btn-sm"
-                               onclick="return confirm('Deseja excluir este plano?')">
+                                <a href="?controller=plan&action=delete&id=<?= $plan['id'] ?>"
+                                class="btn btn-outline-danger btn-sm"
+                                onclick="return confirm('Deseja excluir este plano?')">
 
-                                Excluir
+                                    Excluir
 
-                            </a>
-
+                                </a>
+                            </div>
 
                         </td>
 

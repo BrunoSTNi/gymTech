@@ -46,6 +46,35 @@
             <p>
                 Faça login para acessar o sistema
             </p>
+            <?php if(isset($_SESSION['login_error'])): ?>
+
+                <div class="alert alert-danger shadow-sm border-0 login-alert">
+
+                    <div class="d-flex align-items-center">
+
+                        <div class="alert-icon">
+                            ❌
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Não foi possível entrar
+                            </strong>
+
+                            <br>
+
+                            <?= $_SESSION['login_error']; ?>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <?php unset($_SESSION['login_error']); ?>
+
+                <?php endif; ?>
 
 
             <form method="POST"

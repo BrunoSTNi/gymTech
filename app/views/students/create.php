@@ -29,142 +29,253 @@
         <div class="glass-card p-5">
 
             <form method="POST"
-                  action="?controller=student&action=store">
+      action="?controller=student&action=store">
+
+    <!-- ================= DADOS PESSOAIS ================= -->
+
+    <h5 class="mb-4 fw-bold text-primary">
+        👤 Dados Pessoais
+    </h5>
+
+    <div class="row">
+
+        <div class="col-md-6 mb-4">
+
+            <label class="form-label">
+                Nome completo
+            </label>
+
+            <input type="text"
+                   name="name"
+                   class="form-control"
+                   placeholder="Digite o nome do aluno"
+                   required>
+
+        </div>
+
+        <div class="col-md-6 mb-4">
+
+            <label class="form-label">
+                E-mail
+            </label>
+
+            <input type="email"
+                   name="email"
+                   class="form-control"
+                   placeholder="exemplo@email.com"
+                   required>
+
+        </div>
+
+    </div>
 
 
-                <div class="row">
+    <div class="row">
 
-                    <!-- Nome -->
+        <div class="col-md-4 mb-4">
 
-                    <div class="col-md-6 mb-4">
+            <label class="form-label">
+                Idade
+            </label>
 
-                        <label class="form-label">
-                            Nome completo
-                        </label>
+            <input type="number"
+                   name="age"
+                   class="form-control"
+                   min="10"
+                   max="100">
 
-                        <input type="text"
-                               name="name"
-                               class="form-control"
-                               placeholder="Digite o nome do aluno"
-                               required>
+        </div>
 
-                    </div>
+        <div class="col-md-4 mb-4">
 
+            <label class="form-label">
+                Plano
+            </label>
 
-                    <!-- Email -->
+            <select name="plan_id"
+                    class="form-select">
 
-                    <div class="col-md-6 mb-4">
+                <?php foreach($plans as $plan): ?>
 
-                        <label class="form-label">
-                            E-mail
-                        </label>
+                    <option value="<?= $plan['id'] ?>">
 
-                        <input type="email"
-                               name="email"
-                               class="form-control"
-                               placeholder="exemplo@email.com"
-                               required>
+                        <?= $plan['name'] ?>
 
-                    </div>
+                        - R$
+                        <?= number_format($plan['price'],2,',','.') ?>
 
-                </div>
+                    </option>
 
+                <?php endforeach; ?>
 
-                <div class="row">
+            </select>
 
-                    <!-- Idade -->
+        </div>
 
-                    <div class="col-md-4 mb-4">
-
-                        <label class="form-label">
-                            Idade
-                        </label>
-
-                        <input type="number"
-                               name="age"
-                               class="form-control"
-                               placeholder="Ex: 25">
-
-                    </div>
+    </div>
 
 
-                    <!-- Objetivo -->
-
-                    <div class="col-md-4 mb-4">
-
-                        <label class="form-label">
-                            Objetivo
-                        </label>
-
-                        <select name="objective"
-                                class="form-select">
-
-                            <option value="Hipertrofia">
-                                Hipertrofia
-                            </option>
-
-                            <option value="Emagrecimento">
-                                Emagrecimento
-                            </option>
-
-                            <option value="Força">
-                                Força
-                            </option>
-
-                        </select>
-
-                    </div>
+    <hr class="my-5">
 
 
-                    <!-- Plano -->
+    <!-- ================= IA ================= -->
 
-                    <div class="col-md-4 mb-4">
+    <h5 class="mb-4 fw-bold text-success">
 
-                        <label class="form-label">
-                            Plano
-                        </label>
+        🤖 Informações para IA
 
-                        <select name="plan_id"
-                                class="form-select">
-
-                            <?php foreach($plans as $plan): ?>
-
-                                <option value="<?= $plan['id'] ?>">
-
-                                    <?= $plan['name'] ?>
-                                    - R$ <?= number_format($plan['price'], 2, ',', '.') ?>
-
-                                </option>
-
-                            <?php endforeach; ?>
-
-                        </select>
-
-                    </div>
-
-                </div>
+    </h5>
 
 
-                <div class="form-actions">
+    <div class="row">
 
-                    <a href="?controller=student&action=index"
-                       class="btn btn-outline-dark">
+        <div class="col-md-6 mb-4">
 
-                        Cancelar
+            <label class="form-label">
 
-                    </a>
+                Objetivo
+
+            </label>
+
+            <select
+                name="objective"
+                class="form-select"
+                required>
+
+                <option value="Hipertrofia">
+                    💪 Hipertrofia
+                </option>
+
+                <option value="Emagrecimento">
+                    🔥 Emagrecimento
+                </option>
+
+                <option value="Força">
+                    🏋️ Força
+                </option>
+
+                <option value="Resistência">
+                    ❤️ Resistência
+                </option>
+
+                <option value="Condicionamento">
+                    ⚡ Condicionamento
+                </option>
+
+            </select>
+
+        </div>
 
 
-                    <button class="btn btn-gradient">
+        <div class="col-md-6 mb-4">
 
-                        Salvar Aluno
+            <label class="form-label">
 
-                    </button>
+                Dias de treino
 
-                </div>
+            </label>
+
+            <select
+                name="training_days"
+                class="form-select"
+                required>
+
+                <?php for($i=1;$i<=6;$i++): ?>
+
+                    <option value="<?= $i ?>">
+
+                        <?= $i ?>
+
+                        dia<?= $i>1?'s':'' ?> por semana
+
+                    </option>
+
+                <?php endfor; ?>
+
+            </select>
+
+        </div>
+
+    </div>
 
 
-            </form>
+    <div class="row">
+
+        <div class="col-md-6 mb-4">
+
+            <label class="form-label">
+
+                Nível de experiência
+
+            </label>
+
+            <select
+                name="experience_level"
+                class="form-select"
+                required>
+
+                <option value="Iniciante">
+
+                    🟢 Iniciante
+
+                </option>
+
+                <option value="Intermediário">
+
+                    🟡 Intermediário
+
+                </option>
+
+                <option value="Avançado">
+
+                    🔴 Avançado
+
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="col-md-6 mb-4">
+
+            <label class="form-label">
+
+                Limitações físicas
+
+            </label>
+
+            <textarea
+                name="limitations"
+                class="form-control"
+                rows="3"
+                placeholder="Ex.: Hérnia de disco, dores no joelho, lesão no ombro..."></textarea>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-actions mt-4">
+
+        <a href="?controller=student&action=index"
+           class="btn btn-outline-dark">
+
+            Cancelar
+
+        </a>
+
+        <button
+            type="submit"
+            class="btn btn-gradient">
+
+            💾 Salvar Aluno
+
+        </button>
+
+    </div>
+
+</form>
 
         </div>
 

@@ -53,12 +53,13 @@ class PlanController extends Controller{
         $id = $_GET['id'];
         $planModel = new Plan();
         if($planModel->delete($id)){
-            $_SESSION['error'] =
-            "Não é possível excluir um plano que possui alunos cadastrados.";
+            $_SESSION['success'] =
+            "Plano removido com sucesso.";
+            
         }
         else{
-            $_SESSION['sucess'] =
-            "Plano removido com sucesso.";
+            $_SESSION['error'] =
+            "Não é possível excluir um plano que possui alunos cadastrados.";
         }
         
         header("Location: ?controller=plan&action=index");

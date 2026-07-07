@@ -1,0 +1,35 @@
+.card{
+
+    border-radius:18px;
+
+    transition:.25s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+
+}
+
+.badge{
+
+    font-size:.85rem;
+
+    padding:8px 14px;
+
+}
+
+.btn{
+
+    border-radius:12px;
+
+}
+
+h2{
+
+    font-weight:700;
+
+}

@@ -85,7 +85,7 @@
                         </label>
 
                         <input type="number"
-                               name="duration_days"
+                               name="duration"
                                min="1"
                                class="form-control"
                                placeholder="30"

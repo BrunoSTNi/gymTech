@@ -1,150 +1,135 @@
-<?php require_once '../app/views/layouts/header.php'; ?>
-<?php require_once '../app/views/layouts/sidebar.php'; ?>
-<!DOCTYPE html>
-<html lang="pt-br">
+<div class="page-header">
 
-<head>
+    <div>
 
-<meta charset="UTF-8">
+        <h2>
+            <?= $workout['workout_name'] ?>
+        </h2>
 
-<title>Ficha de Treino</title>
+        <span>
+            Visualização completa do treino
+        </span>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet">
+    </div>
 
-</head>
+</div>
 
-<body class="bg-light">
+<div class="row mt-4">
 
-<div class="container mt-5">
+    <div class="col-md-4">
 
-    <div class="card shadow border-0">
+        <div class="glass-card p-4">
 
-        <div class="card-header bg-dark text-white">
+            <h5 class="mb-4">
+                Informações Gerais
+            </h5>
 
-            <h3>
+            <p>
+                <strong>Aluno:</strong><br>
+                <?= $workout['student_name'] ?>
+            </p>
 
-                🏋️ <?= $workout['workout_name'] ?>
+            <p>
+                <strong>Objetivo:</strong><br>
 
-            </h3>
+                <span class="badge bg-success">
+                    <?= $workout['objective'] ?>
+                </span>
+            </p>
+
+            <p>
+                <strong>Dias de treino:</strong><br>
+                <?= $workout['training_days'] ?> dias/semana
+            </p>
+
+            <p>
+                <strong>Criado em:</strong><br>
+                <?= date(
+                    'd/m/Y',
+                    strtotime($workout['created_at'])
+                ) ?>
+            </p>
 
         </div>
 
-        <div class="card-body">
+    </div>
 
-            <div class="row mb-4">
+    <div class="col-md-8">
 
-                <div class="col-md-6">
+        <div class="glass-card p-4">
 
-                    <strong>Aluno:</strong>
+            <div class="d-flex justify-content-between mb-4">
 
-                    <?= $workout['student_name'] ?>
+                <h5>
+                    Exercícios do Treino
+                </h5>
 
-                </div>
+                <a href="?controller=workout&action=manageExercises&id=<?= $workout['id'] ?>"
+                   class="btn btn-gradient">
 
-                <div class="col-md-3">
+                    Adicionar Exercícios
 
-                    <strong>Objetivo:</strong>
-
-                    <?= $workout['objective'] ?>
-
-                </div>
-
-                <div class="col-md-3">
-
-                    <strong>Dias:</strong>
-
-                    <?= $workout['training_days'] ?>
-
-                </div>
+                </a>
 
             </div>
 
-            <table class="table table-striped">
+            <?php if(empty($exercises)): ?>
 
-                <thead class="table-dark">
+                <div class="alert alert-info">
 
-                    <tr>
+                    Nenhum exercício cadastrado neste treino.
 
-                        <th>Exercício</th>
+                </div>
 
-                        <th>Grupo</th>
+            <?php else: ?>
 
-                        <th>Séries</th>
+                <table class="table modern-table">
 
-                        <th>Repetições</th>
+                    <thead>
 
-                        <th>Descanso</th>
+                        <tr>
+                            <th>Exercício</th>
+                            <th>Séries</th>
+                            <th>Repetições</th>
+                            <th>Descanso</th>
+                        </tr>
 
-                        <th>Ações</th>
+                    </thead>
 
-                    </tr>
+                    <tbody>
 
-                </thead>
+                    <?php foreach($exercises as $exercise): ?>
 
-                <tbody>
+                        <tr>
 
-                <?php foreach($exercises as $exercise): ?>
+                            <td>
+                                <?= $exercise['name'] ?>
+                            </td>
 
-                    <tr>
+                            <td>
+                                <?= $exercise['sets'] ?>
+                            </td>
 
-                        <td>
+                            <td>
+                                <?= $exercise['reps'] ?>
+                            </td>
 
-                            <?= $exercise['exercise_name'] ?>
+                            <td>
+                                <?= $exercise['rest_time'] ?>
+                            </td>
 
-                        </td>
+                        </tr>
 
-                        <td>
+                    <?php endforeach; ?>
 
-                            <?= $exercise['muscle_group'] ?>
+                    </tbody>
 
-                        </td>
+                </table>
 
-                        <td>
-
-                            <?= $exercise['sets'] ?>
-
-                        </td>
-
-                        <td>
-
-                            <?= $exercise['reps'] ?>
-
-                        </td>
-
-                        <td>
-
-                            <?= $exercise['rest_time'] ?>
-
-                        </td>
-
-                        <td>
-
-                            <a href="?controller=workoutExercise&action=delete&id=<?= $exercise['id'] ?>&workout_id=<?= $workout['id'] ?>"
-                            class="btn btn-danger btn-sm"
-                            onclick="return confirm('Deseja remover este exercício?')">
-
-                            Excluir
-
-                            </a>
-
-                        </td>
-
-                    </tr>
-
-                <?php endforeach; ?>
-
-                </tbody>
-
-            </table>
+            <?php endif; ?>
 
         </div>
 
     </div>
 
 </div>
-
-</body>
-
-</html>
-<?php require_once '../app/views/layouts/footer.php'; ?>

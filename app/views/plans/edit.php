@@ -33,8 +33,8 @@ action="?controller=plan&action=update">
 <label>Duração (dias)</label>
 
 <input type="number"
-       name="duration_days"
-       value="<?= $plan['duration_days'] ?>"
+       name="duration"
+       value="<?= $plan['duration'] ?>"
        min="1"
        class="form-control mb-3"
        required>
