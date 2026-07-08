@@ -4,8 +4,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
- require_once "../core/Controller.php";
+require_once '../core/Env.php';
+
+Env::load(dirname(__DIR__) . '/.env');
+require_once "../core/Controller.php";
 require_once "../core/Model.php";
+
 
 $controller = $_GET['controller'] ?? 'auth';
 $action = $_GET['action'] ?? 'login';

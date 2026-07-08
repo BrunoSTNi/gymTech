@@ -1,14 +1,22 @@
 <?php
 
-class Database {
+class Database
+{
+    private $host;
+    private $dbname;
+    private $user;
+    private $pass;
 
-    private $host = "localhost";
-    private $dbname = "gym_system";
-    private $user = "root";
-    private $pass = "";
+    public function __construct()
+    {
+        $this->host = $_ENV['DB_HOST'];
+        $this->dbname = $_ENV['DB_NAME'];
+        $this->user = $_ENV['DB_USER'];
+        $this->pass = $_ENV['DB_PASS'];
+    }
 
-    public function connect() {
-
+    public function connect()
+    {
         try {
 
             $pdo = new PDO(
@@ -21,9 +29,9 @@ class Database {
 
             return $pdo;
 
-        } catch(PDOException $e) {
+        } catch(PDOException $e){
 
-            die("Erro na conexão: " . $e->getMessage());
+            die("Erro na conexão: ".$e->getMessage());
 
         }
     }
